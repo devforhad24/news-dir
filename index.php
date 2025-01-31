@@ -4,6 +4,9 @@
     $sql = "SELECT id,sitename,sitelogo,siteurl,details,country FROM newssite";
     $sql_query = mysqli_query($con, $sql);
 
+    $sql_menu = "SELECT id, countryname, countryalias FROM mainmenu";
+    $sql_menu_query = mysqli_query($con, $sql_menu);
+
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +26,14 @@
         <div class="menuBar">
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">Bangladesh</a></li>
-                <li><a href="#">India</a></li>
-                <li><a href="#">America</a></li>
+                <?php
+                    while($menu = mysqli_fetch_array($sql_menu_query)){
+                    $menuid = $menu['id'];
+                    $countryname = $menu['countryname'];
+                    $countryalias = $menu['countryalias'];
+                ?>
+                <li><a href="#"><?php echo $countryname; ?></a></li>
+                <?php } ?>
             </ul>
         </div>
         <div class="contentBody">

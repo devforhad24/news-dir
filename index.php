@@ -1,3 +1,11 @@
+<?php
+    require('connect.inc.php');
+
+    $sql = "SELECT id,sitename,sitelogo,details,country FROM newssite";
+    $sql_query = mysqli_query($con, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,18 +31,17 @@
         <div class="contentBody">
             <div class="contentBodyLeft">
                 <div class="contentContainer">
+                    <?php 
+                        while($data = mysqli_fetch_array($sql_query)){
+                            $id = $data['id'];
+                            $sitename = $data['sitename'];
+                            $sitelogo = $data['sitelogo'];
+                    ?>
                     <div class="logoContainer">
-                        <img src="images/Prothom-Alo-logo.jpg" alt="prothomalo">
-                        <h3>Prothom Alo</h3>
+                        <img src="images/<?php echo $sitelogo; ?>" alt="prothomalo">
+                        <h3><?php echo $sitename; ?></h3>
                     </div>
-                    <div class="logoContainer">
-                        <img src="images/timesofindia.jpg" alt="prothomalo">
-                        <h3>Times of India</h3>
-                    </div>
-                    <div class="logoContainer">
-                        <img src="images/bbc_news_logo.png" alt="prothomalo">
-                        <h3>BBC News</h3>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="contentBodyRight">

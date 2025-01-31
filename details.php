@@ -1,8 +1,11 @@
 <?php
     require('connect.inc.php');
 
-    $sql = "SELECT id,sitename,sitelogo,siteurl,details,country FROM newssite";
+    $getid = $_GET['id'];
+
+    $sql = "SELECT id,sitename,sitelogo,siteurl,details,country FROM newssite WHERE id=$getid";
     $sql_query = mysqli_query($con, $sql);
+    
 
 ?>
 
@@ -30,20 +33,18 @@
         </div>
         <div class="contentBody">
             <div class="contentBodyLeft">
-                <div class="contentContainer">
-                    <?php 
-                        while($data = mysqli_fetch_array($sql_query)){
-                            $id = $data['id'];
-                            $sitename = $data['sitename'];
-                            $sitelogo = $data['sitelogo'];
-                            $siteurl = $data['siteurl'];
-                    ?>
-                    <div class="logoContainer">
-                        <a href="http://<?php echo $siteurl; ?>"><img src="images/<?php echo $sitelogo; ?>" alt="prothomalo"></a>
-                        <a href="details.php?id=<?php echo $id ?>"><h3><?php echo $sitename; ?></h3></a>
-                    </div>
-                    <?php } ?>
-                </div>
+                <?php
+                    $data = mysqli_fetch_array($sql_query);
+
+                    $sitename = $data['sitename'];
+                    $sitelogo = $data['sitelogo'];
+                    $details = $data['details'];
+
+                ?>
+                <h2><?php echo $sitename; ?></h2>
+                
+                <img width="250px;" id="detailslogo" src="images/<?php echo $sitelogo; ?>" alt="sitelogo">
+                <p><?php echo $details; ?></p>
             </div>
             <div class="contentBodyRight">
                 <div class="contentBodyRightOne">

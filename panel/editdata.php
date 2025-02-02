@@ -3,6 +3,9 @@
     
     require('../connect.inc.php');
     include('menu.inc.php');
+    require('core.inc.php');
+
+    if(!empty($_SESSION['user_id'])){
 
         $sql = "SELECT * FROM newssite WHERE id={$getid}";
         $sql_query = mysqli_query($con, $sql);
@@ -71,3 +74,8 @@
     
     <input type="submit" value="submit">
 </form>
+
+<?php }else{
+        header('location:login.php');
+    }
+?>

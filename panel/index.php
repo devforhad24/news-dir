@@ -1,3 +1,10 @@
+<?php
+    require('core.inc.php');
+    if(!empty($_SESSION['user_id'])){
+
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,3 +20,7 @@
 
 </body>
 </html>
+
+<?php }else{
+    header('location:login.php');
+} ?>

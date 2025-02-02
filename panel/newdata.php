@@ -1,6 +1,8 @@
 <?php
     require('../connect.inc.php');
 
+    include('menu.inc.php');
+
     if(isset($_POST['sitename']) AND isset($_POST['siteurl']) AND isset($_POST['details']) AND isset($_POST['country']) AND isset($_POST['status']) ){
         $sitename = $_POST['sitename'];
         $siteurl = $_POST['siteurl'];

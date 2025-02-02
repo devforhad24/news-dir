@@ -1,5 +1,6 @@
 <?php 
     require ('../connect.inc.php');
+    include('menu.inc.php');
 
     $sql = "SELECT id,sitename FROM newssite";
     $sql_query = mysqli_query($con, $sql);

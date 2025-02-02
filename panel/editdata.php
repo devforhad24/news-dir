@@ -2,6 +2,7 @@
     $getid = $_REQUEST['id'];
     
     require('../connect.inc.php');
+    include('menu.inc.php');
 
         $sql = "SELECT * FROM newssite WHERE id={$getid}";
         $sql_query = mysqli_query($con, $sql);

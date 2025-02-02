@@ -14,7 +14,12 @@
         if(!empty($sitename) AND !empty($sitelogo) AND !empty($siteurl) AND !empty($details) AND !empty($country) AND !empty($status)){
             move_uploaded_file($tmpname,'../images/'.$sitelogo);
             $sql = "INSERT INTO newssite VALUES ('','$sitename','$sitelogo','$siteurl','$details','$country','$status')";
-            $sql_query = mysqli_query($con, $sql);
+    
+            if($sql_query = mysqli_query($con, $sql)){
+                header('location: listofdata.php');
+            }else{
+                echo 'Something went wrong! Try again please';
+            }
         }else{
             echo 'Fill up all forms!';
         }

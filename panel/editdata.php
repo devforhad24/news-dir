@@ -28,10 +28,18 @@
         if(!empty($newid) AND !empty($newsitename) AND !empty($sitelogo) AND !empty($newsiteurl) AND !empty($newdetails) AND !empty($newcountry) AND !empty($newstatus) ){
             move_uploaded_file($tmpname,'../images/'.$sitelogo);
             $update_sql = "UPDATE newssite SET sitename='$newsitename', sitelogo='$sitelogo' ,siteurl ='$newsiteurl', details ='$newdetails', country ='$newcountry', status ='$newstatus' WHERE id=$newid";
-            $update_sql_query = mysqli_query($con, $update_sql);
+            if($update_sql_query = mysqli_query($con, $update_sql)){
+                header('location: listofdata.php');
+            }else{
+                echo 'Something went wrong! Try again please';
+            }
         }else if(!empty($newid) AND !empty($newsitename) AND empty($sitelogo) AND !empty($newsiteurl) AND !empty($newdetails) AND !empty($newcountry) AND !empty($newstatus) ){
             $update_sql = "UPDATE newssite SET sitename='$newsitename', sitelogo='$sitelogo' ,siteurl ='$newsiteurl', details ='$newdetails', country ='$newcountry', status ='$newstatus' WHERE id=$newid";
-            $update_sql_query = mysqli_query($con, $update_sql);
+            if($update_sql_query = mysqli_query($con, $update_sql)){
+                header('location: listofdata.php');
+            }else{
+                echo 'Something went wrong! Try again please';
+            }
         }else{
             echo 'Fill up all fields';
         }   

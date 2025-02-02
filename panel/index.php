@@ -7,8 +7,9 @@
 </head>
 <body>
     
-    <a href="newdata.php">New Data</a>
-    <a href="listofdata.php">Edit Data</a>
+    <a href="newdata.php"><h3>New Data</h3></a>
+    <a href="listofdata.php"><h3>Edit Data</h3></a>
+    <a href="logout.php"><h3>Logout</h3></a>
 
 </body>
 </html>
